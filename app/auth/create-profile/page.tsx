@@ -33,14 +33,14 @@ const mobile = params.get("mobile");
     })
     const data = await res.json()
     setMessage(data.message)
+    if (data.success){
+      window.location.href = '/exam'
+    }
   }
 
   return (
     <>
        <p className="text-2xl mt-4 font-bold mb-8">Add Your Details</p>
-
-     
-
        <form onSubmit={handleSubmit}>
        <input type="file" id="upload" className="hidden" onChange={(e)=>setFile(e.target.files?.[0]||null)}/>
        <label htmlFor="upload" className="border border-dashed text-xs flex flex-col justify-center items-center w-[120px] h-[120px] ml-15 cursor-pointer">
