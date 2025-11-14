@@ -44,6 +44,7 @@ const Page = () => {
        {message && <p className='mt-2 text-green-500'>{message}</p>}
        <p className="mt-3 text-xs">Your 6 digit code is on its way. This can sometimes take a <br/>few moments to arrive.</p>
        <span className="font-semibold underline mt-5 text-sm cursor-pointer">Resend code</span>
+       <span className="text-gray font-bold "> dummy otp:123456</span>
        <button type='submit' className="mt-30 mb-5 border rounded-xl w-3/4 bg-gray-600 text-white h-10">Get Started</button>
        </form>
     </>

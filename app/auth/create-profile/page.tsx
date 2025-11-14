@@ -1,8 +1,7 @@
 'use client'
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { useSearchParams } from 'next/navigation'
-import Image from "next/image";
-
+import {AuthContext} from '../../../context/AuthContext'
 
 const Page = () => {
 
@@ -16,6 +15,9 @@ const mobile = params.get("mobile");
 
   const [file,setFile] = useState<File | null>(null)
   const [message,setMessage] = useState('')
+
+  const auth = useContext(AuthContext)
+    const login = auth?.login
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -32,11 +34,14 @@ const mobile = params.get("mobile");
       body: formData
     })
     const data = await res.json()
-    setMessage(data.message)
-    if (data.success){
-      window.location.href = '/exam'
-    }
-  }
+     if (data.success && data.access_token){
+      if (login){ 
+        login(data.access_token)
+      }
+      window.location.href="/exam"
+}
+  setMessage(data.message)
+}
 
   return (
     <>
